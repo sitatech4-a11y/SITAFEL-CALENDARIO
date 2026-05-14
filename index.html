@@ -252,15 +252,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);min
   </div>
   <!-- API Key banner -->
   <div class="api-key-banner" id="apiKeyBanner">
-    <div><b>🔑 Chave API Groq necessária</b> — Introduz a tua chave gratuita do Groq. É guardada apenas neste browser.</div>
+    <div><b>🔑 Chave API Anthropic necessária</b> — Introduz a tua chave da Anthropic. É guardada apenas neste browser.</div>
     <div class="api-key-row">
-      <input class="api-key-input" id="apiKeyInput" type="password" placeholder="gsk_..." />
+      <input class="api-key-input" id="apiKeyInput" type="password" placeholder="sk-ant-..." />
       <button class="api-key-save" onclick="saveApiKey()">Guardar</button>
     </div>
-    <div style="color:#a06a10;font-size:11px">Obtém a tua chave <b>gratuita</b> em <b>console.groq.com</b> → API Keys</div>
+    <div style="color:#a06a10;font-size:11px">Obtém a tua chave <b>gratuita</b> em <b>console.anthropic.com</b> → API Keys</div>
   </div>
   <div class="api-key-ok" id="apiKeyOk" style="display:none">
-    ✅ <span>Groq AI configurado. Assistente pronto!</span>
+    ✅ <span>Anthropic AI configurado. Assistente pronto!</span>
     <button onclick="clearApiKey()" style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:11px;color:var(--green);text-decoration:underline">Alterar</button>
   </div>
   <div class="ai-messages" id="aiMessages">
@@ -605,10 +605,10 @@ function setType(t){ curType=t; expanded={}; buildPosts(); }
 function togglePost(id){ expanded[id]=!expanded[id]; buildPosts(); }
 
 // API KEY MANAGEMENT (Groq)
-function getApiKey(){ return localStorage.getItem("sitafel_groq_key")||"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"; }
+function getApiKey(){ return localStorage.getItem("sitafel_groq_key")||"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"; }
 function saveApiKey(){
   const val = document.getElementById("apiKeyInput").value.trim();
-  if(val.length < 20){ alert("Chave inválida. Copia a chave completa do Groq."); return; }
+  if(val.length < 20){ alert("Chave inválida."); return; }
   localStorage.setItem("sitafel_groq_key", val);
   updateKeyUI();
 }
@@ -618,7 +618,6 @@ function clearApiKey(){
   updateKeyUI();
 }
 function updateKeyUI(){
-  const key = getApiKey();
   document.getElementById("apiKeyBanner").style.display = "none";
   document.getElementById("apiKeyOk").style.display = "flex";
 }
